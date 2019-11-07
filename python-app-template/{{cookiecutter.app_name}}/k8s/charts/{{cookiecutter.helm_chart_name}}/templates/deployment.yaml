@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.fullname" . {% raw %}}}{% endraw %}
+  labels:
+{% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.labels" . | indent 4 {% raw %}}}{% endraw %}
+spec:
+  replicas: {% raw %}{{{% endraw %} .Values.{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}}.replicaCount {% raw %}}}{% endraw %}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.name" . {% raw %}}}{% endraw %}
+      app.kubernetes.io/instance: {% raw %}{{{% endraw %} .Release.Name {% raw %}}}{% endraw %}
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.name" . {% raw %}}}{% endraw %}
+        app.kubernetes.io/instance: {% raw %}{{{% endraw %} .Release.Name {% raw %}}}{% endraw %}
+    spec:
+      containers:
+        - name: {% raw %}{{{% endraw %} .Chart.Name {% raw %}}}{% endraw %}
+          imagePullPolicy: {% raw %}{{{% endraw %} default "" .Values.global.pullPolicy {% raw %}}}{% endraw %}
+          {% raw %}{{{% endraw %}- with .Values.{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}} {% raw %}}}{% endraw %}
+          image: "{% raw %}{{{% endraw %} .image.repository {% raw %}}}{% endraw %}:{% raw %}{{{% endraw %} .image.tag {% raw %}}}{% endraw %}"
+          livenessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 5
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /
+              port: 8080
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          {% raw %}{{{% endraw %}- end{% raw %}}}{% endraw %}
+          env:
+            - name: NODE_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.hostIP
+          securityContext:
+            runAsUser: {{cookiecutter.docker_user_id}}
+            allowPrivilegeEscalation: false
+          resources:
+{% raw %}{{{% endraw %} toYaml .Values.{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}}.resources | indent 12 {% raw %}}}{% endraw %}

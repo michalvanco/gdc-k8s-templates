@@ -1,0 +1,16 @@
+{
+  "app_name": "test-app",
+  "maintainer": "noone <noone@gooddata.com>",
+  "description": "description",
+  "base_package": "test_app",
+  "docker_image_name": "{{cookiecutter.app_name}}",
+  "docker_user_id": "1112",
+  "helm_chart_name": "{{cookiecutter.app_name}}",
+  "k8s_values_first_level": "application",
+  "k8s_values_second_level": "component",
+  "target_github_repository": "",
+  "_copy_without_render": [
+    "**/.helmignore",
+    "Jenkinsfile"
+  ]
+}
