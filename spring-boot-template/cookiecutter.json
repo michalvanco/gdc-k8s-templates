@@ -7,7 +7,7 @@
   "dependencies": "",
   "group_id": "com.gooddata",
   "artifact_id": "{{cookiecutter.app_name}}",
-  "package_name": "{{cookiecutter.app_name}}",
+  "package_name": "com.gooddata.{{cookiecutter.app_name.replace('-', '.')}}",
   "description": "GoodData {{cookiecutter.app_name.replace('-', ' ').title()}}",
   "docker_image_name": "{{cookiecutter.app_name}}",
   "docker_application_port": "8080",
@@ -16,6 +16,7 @@
   "k8s_values_first_level": "demo",
   "k8s_values_second_level": "testApp",
   "k8s_service_name": "{{cookiecutter.app_name}}",
+  "target_github_repository": "",
   "_copy_without_render": [
     "**/.helmignore",
     "Jenkinsfile"
