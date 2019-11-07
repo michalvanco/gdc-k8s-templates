@@ -1,9 +1,9 @@
 {
   "app_name": "test-app",
   "build_system": ["gradle", "maven"],
-  "app_language": ["java", "kotlin", "groovy"],
-  "java_version": ["1.8", "11", "13"],
-  "bootVersion": ["2.2.1.RELEASE", "2.2.2.BUILD-SNAPSHOT", "2.1.11.BUILD-SNAPSHOT", "2.1.10.RELEASE"],
+  "app_language": "{{cookiecutter['app_language']|default(\"java\")}}",
+  "java_version": "{{cookiecutter.java_version|default(\"1.8\")}}",
+  "boot_version": "{{cookiecutter.boot_version|default(\"2.2.1.RELEASE\")}}",
   "dependencies": "",
   "group_id": "com.gooddata",
   "artifact_id": "{{cookiecutter.app_name}}",

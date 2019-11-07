@@ -12,6 +12,7 @@ curl https://start.spring.io/starter.zip -o {{cookiecutter.app_name}}.zip \
 -d 'javaVersion={{cookiecutter.java_version}}' \
 -d 'language={{cookiecutter.app_language}}' \
 -d 'type={{cookiecutter.build_system}}-project' \
+-d 'bootVersion={{cookiecutter.boot_version}}' \
 -d 'packaging=jar'
 
 unzip {{cookiecutter.app_name}}.zip
