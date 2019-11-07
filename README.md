@@ -29,3 +29,7 @@ in `<output-dir>`.
  * to eliminate the duplication of the similar files (jenkins-ii config, helm charts, etc.) we
  would like to use symlinks but there is currently an issue and it does not
  render the content of symlinked directories, see [github issue](https://github.com/cookiecutter/cookiecutter/issues/865)
+
+## Hackathon developers
+ * [Michal Vanco](https://github.com/michalvanco)
+ * [Matej Plch](https://github.com/matejuh)
