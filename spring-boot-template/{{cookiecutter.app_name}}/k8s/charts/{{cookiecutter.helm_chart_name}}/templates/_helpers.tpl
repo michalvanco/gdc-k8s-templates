@@ -39,4 +39,5 @@ app.kubernetes.io/name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_cha
 helm.sh/chart: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.chart" . {% raw %}}}{% endraw %}
 app.kubernetes.io/instance: {% raw %}{{{% endraw %} .Release.Name {% raw %}}}{% endraw %}
 app.kubernetes.io/managed-by: {% raw %}{{{% endraw %} .Release.Service {% raw %}}}{% endraw %}
+team: {{ cookiecutter.team }}
 {% raw %}{{{% endraw %}- end -{% raw %}}}{% endraw %}
