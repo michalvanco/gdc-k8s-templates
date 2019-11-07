@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Helm Chart for {{cookiecutter.helm_chart_name | replace('-', ' ')}}
+name: {{cookiecutter.helm_chart_name}}
+version: 1.0.0

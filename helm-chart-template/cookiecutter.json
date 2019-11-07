@@ -1,0 +1,12 @@
+{
+  "helm_chart_name": "test-app",
+  "docker_image_name": "{{cookiecutter.helm_chart_name}}",
+  "docker_application_port": "8080",
+  "docker_user_id": "1111",
+  "k8s_values_first_level": "default",
+  "k8s_values_second_level": "testApp",
+  "k8s_service_name": "{{cookiecutter.helm_chart_name}}",
+  "_copy_without_render": [
+    "**/.helmignore"
+  ]
+}

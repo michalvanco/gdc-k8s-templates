@@ -1,0 +1,16 @@
+{
+  "app_name": "test-app",
+  "build_system": ["gradle", "maven"],
+  "language": ["java", "kotlin", "groovy"],
+  "docker_image_name": "{{cookiecutter.app_name}}",
+  "docker_application_port": "8080",
+  "docker_user_id": "1112",
+  "helm_chart_name": "{{cookiecutter.app_name}}",
+  "k8s_values_first_level": "demo",
+  "k8s_values_second_level": "testApp",
+  "k8s_service_name": "{{cookiecutter.app_name}}",
+  "_copy_without_render": [
+    "**/.helmignore",
+    "Jenkinsfile"
+  ]
+}

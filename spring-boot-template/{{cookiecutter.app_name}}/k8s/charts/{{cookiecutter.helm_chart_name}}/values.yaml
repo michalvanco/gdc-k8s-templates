@@ -1,0 +1,20 @@
+global:
+  pullPolicy: IfNotPresent
+
+{{cookiecutter.k8s_values_first_level}}:
+  {{cookiecutter.k8s_values_second_level}}:
+    replicas: 2
+    resources:
+      limits:
+        cpu: 100m
+      requests:
+        cpu: 50m
+    image:
+      registry: harbor.intgdc.com
+      namespace: stable
+      tag: latest
+      name: {{cookiecutter.docker_image_name}}
+    service:
+      name: {{cookiecutter.k8s_service_name}}
+      internalPort: {{cookiecutter.docker_application_port}}
+      externalPort: {{cookiecutter.docker_application_port}}

@@ -1,0 +1,19 @@
+{
+  "app_name": "test-app",
+  "js_vs_typescript": ["js", "ts"],
+  "docker_image_name": "{{cookiecutter.app_name}}",
+  "docker_build_image_base": "node:10-alpine",
+  "docker_app_build_command": "npm install && npm run build",
+  "docker_final_image_base": "nginxinc/nginx-unprivileged:1.17.2-alpine",
+  "docker_application_port": "8080",
+  "docker_user_id": "101",
+  "helm_chart_name": "{{cookiecutter.app_name}}",
+  "k8s_values_first_level": "client",
+  "k8s_values_second_level": "testApp",
+  "k8s_service_name": "{{cookiecutter.app_name}}",
+  "_copy_without_render": [
+    "**/.helmignore",
+    "Jenkinsfile",
+    "nginx/nginx.conf"
+  ]
+}
