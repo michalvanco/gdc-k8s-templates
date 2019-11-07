@@ -1,0 +1,28 @@
+---
+logging:
+  version: 1
+  disable_existing_loggers: False
+  formatters:
+    simple:
+      format: '%(asctime)s [%(levelname)s] --- [%(threadName)s] %(name)s : %(message)s'
+    syslog:
+      format: 't="%(threadName)s" s="%(levelname)s" l="%(name)s" component={{cookiecutter.app_name}} %(message)s'
+
+  handlers:
+    console:
+      class: logging.StreamHandler
+      formatter: simple
+      stream: ext://sys.stdout
+    syslog:
+      class: logging.handlers.SysLogHandler
+      formatter: syslog
+      facility: local5
+
+  loggers:
+    {{cookiecutter.base_package}}:
+      level: INFO
+
+  root:
+    level: INFO
+    handlers:
+      - console

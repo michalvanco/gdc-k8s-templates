@@ -1,0 +1,10 @@
+microservices:
+  {{cookiecutter.docker_image_name}}:
+    docker:
+      dockerfile: './Dockerfile'
+      customTags:
+        - 'latest'
+      cacheFromTag: 'latest'
+    chartPath: '{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}}.image'
+charts:
+  - '{{cookiecutter.helm_chart_name}}'
