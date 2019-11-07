@@ -1,5 +1,9 @@
 microservices:
   {{cookiecutter.docker_image_name}}:
+    build:
+      env: '{%- if cookiecutter.build_system == 'gradle' %}gradlew{%- else %}mvnw{%- endif %}'
+      path: '.'
+      args: 'clean {%- if cookiecutter.build_system == 'gradle' %}build{%- else %}package{%- endif %}'
     docker:
       dockerfile: './Dockerfile'
       customTags:
