@@ -17,7 +17,7 @@
   "k8s_values_second_level": "testApp",
   "k8s_service_name": "{{cookiecutter.app_name}}",
   "team": "",
-  "target_github_repository": "",
+  "target_github_repository": "https://github.com/gooddata/{{cookiecutter.app_name}}",
   "_copy_without_render": [
     "**/.helmignore",
     "Jenkinsfile"
