@@ -5,7 +5,7 @@ metadata:
   labels:
 {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.labels" . | indent 4 {% raw %}}}{% endraw %}
 spec:
-  replicas: {% raw %}{{{% endraw %} .Values.{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}}.replicaCount {% raw %}}}{% endraw %}
+  replicas: {% raw %}{{{% endraw %} .Values.{{cookiecutter.k8s_values_first_level}}.{{cookiecutter.k8s_values_second_level}}.replicas {% raw %}}}{% endraw %}
   selector:
     matchLabels:
       app.kubernetes.io/name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.name" . {% raw %}}}{% endraw %}
