@@ -24,15 +24,15 @@ data:
           summary: "{{`{{ $labels.pod }}`}} pod has too many restarts"
           runbook: "https://confluence.intgdc.com/display/plat/Generic+runbooks#Genericrunbooks-Podhastoomanyrestarts"{% endraw %}
       - alert: "[{{cookiecutter.app_name.replace('-', ' ').title()}}] pod has too many restarts on cluster={% raw %}{{ .Values.clusterId }}{% endraw %}"
-          expr: container_pod:{{cookiecutter.app_name.replace('-', '_')}}_pod_container_status_restarts:increase10m >= 2
-          labels:
-            severity: critical
-            team: {{cookiecutter.team}}
-            cluster_id: {% raw %}{{ .Values.clusterId }}{% endraw %}
-          annotations: {% raw %}
-            description: "There is more than 1 restart of {{`{{ $labels.pod }}`}} pod in the last 10 minutes"
-            summary: "{{`{{ $labels.pod }}`}} pod has too many restarts"
-            runbook: "https://confluence.intgdc.com/display/plat/Generic+runbooks#Genericrunbooks-Podhastoomanyrestarts"{% endraw %}
+        expr: container_pod:{{cookiecutter.app_name.replace('-', '_')}}_pod_container_status_restarts:increase10m >= 2
+        labels:
+          severity: critical
+          team: {{cookiecutter.team}}
+          cluster_id: {% raw %}{{ .Values.clusterId }}{% endraw %}
+        annotations: {% raw %}
+          description: "There is more than 1 restart of {{`{{ $labels.pod }}`}} pod in the last 10 minutes"
+          summary: "{{`{{ $labels.pod }}`}} pod has too many restarts"
+          runbook: "https://confluence.intgdc.com/display/plat/Generic+runbooks#Genericrunbooks-Podhastoomanyrestarts"{% endraw %}
       - record: "container_pod:{{cookiecutter.app_name.replace('-', '_')}}_pod_container_status_oomkilled:increase10m"
         expr: increase(kube_pod_container_status_terminated_reason{namespace='{% raw %}{{ .Release.Namespace }}{% endraw %}', reason='OOMKilled', pod=~'^{% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.fullname" . {% raw %}}}{% endraw %}.*'}[10m])
       - alert: "[{{cookiecutter.app_name.replace('-', ' ').title()}}] OOMKill occured on cluster={% raw %}{{ .Values.clusterId }}{% endraw %}"
