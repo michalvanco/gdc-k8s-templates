@@ -45,7 +45,7 @@ spec:
               protocol: TCP
           {% raw %}{{{% endraw %}- end{% raw %}}}{% endraw %}
           env:
-            - name: NODE_IP
+            - name: NODE_NAME
               valueFrom:
                 fieldRef:
                   fieldPath: status.hostIP
