@@ -14,7 +14,7 @@ which should be developed by us (ideally locally) and deployed in k8s.
  * [common Helm chart](./helm-chart-template)
  * [React Application](./react-app-template)
  * [Spring Boot Application](./spring-boot-template)
-
+ * [Python Application](./python-app-template)
 
 ## How to generate new service
 ```
@@ -33,3 +33,4 @@ in `<output-dir>`.
 ## Hackathon developers
  * [Michal Vanco](https://github.com/michalvanco)
  * [Matej Plch](https://github.com/matejuh)
+ * [Jakub Plichta](https://github.com/jakub-plichta)

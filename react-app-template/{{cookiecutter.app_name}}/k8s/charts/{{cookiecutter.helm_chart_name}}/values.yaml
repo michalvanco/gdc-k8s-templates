@@ -18,3 +18,4 @@ global:
       name: {{cookiecutter.k8s_service_name}}
       internalPort: {{cookiecutter.docker_application_port}}
       externalPort: {{cookiecutter.docker_application_port}}
+      ingressHost: local.{{cookiecutter.k8s_service_name}}.{{cookiecutter.k8s_values_first_level}}.k8s.intgdc.com

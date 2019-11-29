@@ -79,6 +79,13 @@ This will install the defined k8s objects in default namespaces (you can alterna
 $ kubectl get pods
 ```
 
+### Application routing
+To test the application via Ingress (Istio) endpoint, you can install some extension like `ModHeader` and define header
+"Host: local.{{cookiecutter.k8s_service_name}}.{{cookiecutter.k8s_values_first_level}}.k8s.intgdc.com"
+And then open the browser at: <k8s-instance/worker-url>:20080 and it should point you to the application.
+
+For routing via GoodProxy on some specific URI, please reach Honeybadgers team to configure GoodProxy on defined clusters.
+
 ### Any issues?
 Try to troubleshoot yourself, feel free to reach the [#proj-ii](https://app.slack.com/client/T02G0PHRH/C4JFVCW2V) slack channel or somebody
 from II team when you are lost.
