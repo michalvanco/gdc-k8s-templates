@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.fullname" . {% raw %}}}{% endraw %}-netpol
+  labels:
+{% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.labels" . | indent 4 {% raw %}}}{% endraw %}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {% raw %}{{{% endraw %} include "{{cookiecutter.helm_chart_name}}.name" . {% raw %}}}{% endraw %}
+      app.kubernetes.io/instance: {% raw %}{{{% endraw %} .Release.Name {% raw %}}}{% endraw %}
+  policyTypes:
+    - Egress
+  egress:
+    - ports:
+        - protocol: UDP
+          port: 53 # DNS
+        - protocol: UDP
+          port: 514 # rsyslog
+    - to:
+        - namespaceSelector:
+            matchLabels:
+              name: istio-system
