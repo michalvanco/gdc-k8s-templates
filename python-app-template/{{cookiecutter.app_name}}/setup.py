@@ -25,7 +25,7 @@ params = {
         ],
     },
     'long_description': '{{cookiecutter.description}}',
-    'install_requires': ['PyYAML==3.13', 'prometheus_client==0.6.0'],
+    'install_requires': ['PyYAML==5.4', 'prometheus_client==0.6.0'],
     'zip_safe': False,
     'include_package_data': True
 }
